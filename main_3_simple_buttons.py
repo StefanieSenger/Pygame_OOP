@@ -11,7 +11,9 @@ from settings import WINDOW_WIDTH, WINDOW_HEIGHT, FRAMES_PER_SECOND, BLACK
 pygame.init()
 window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 clock = pygame.time.Clock()
-simpleButton = SimpleButton(window = window, pos = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2))
+simpleButtonA = SimpleButton(window = window, pos = (WINDOW_WIDTH//4, WINDOW_HEIGHT//2))
+simpleButtonB = SimpleButton(window = window, pos = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2))
+simpleButtonC = SimpleButton(window = window, pos = (WINDOW_WIDTH//4*3, WINDOW_HEIGHT//2))
 
 # Loop FRAMES_PER_SECOND times (per second)
 while True:
@@ -25,12 +27,16 @@ while True:
             sys.exit()
 
         # all the other events are handled by the class method
-        simpleButton.handle_events(event)
+        simpleButtonA.handle_events(event)
+        simpleButtonB.handle_events(event)
+        simpleButtonC.handle_events(event)
 
 
     # draw new window with (possibly) updated button
     window.fill(BLACK)
-    simpleButton.draw()
+    simpleButtonA.draw()
+    simpleButtonB.draw()
+    simpleButtonC.draw()
     pygame.display.update()
 
     # Slow things down a bit

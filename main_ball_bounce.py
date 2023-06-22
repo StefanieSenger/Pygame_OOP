@@ -13,7 +13,7 @@ from settings import WINDOW_WIDTH, WINDOW_HEIGHT, FRAMES_PER_SECOND, BLACK
 pygame.init()
 window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 clock = pygame.time.Clock()
-ball_list = [Ball() for i in range(10)]
+ball_list = [Ball(window) for i in range(10)]
 
 # Loop FRAMES_PER_SECOND times (per second)
 while True:
@@ -34,7 +34,7 @@ while True:
 
     # Draw the window elements
     for ball in ball_list:
-        window.blit(*ball.draw())
+        ball.draw()
 
     # Update the window
     pygame.display.update()

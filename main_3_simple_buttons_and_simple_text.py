@@ -5,13 +5,20 @@ from pygame.locals import *
 import sys
 
 from SimpleButton import SimpleButton
+from SimpleText import SimpleText
 from settings import WINDOW_WIDTH, WINDOW_HEIGHT, FRAMES_PER_SECOND, BLACK
 
 # Initialize window and button object
 pygame.init()
 window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 clock = pygame.time.Clock()
-simpleButton = SimpleButton(window = window, pos = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2))
+
+simpleButtonA = SimpleButton(window = window, pos = (WINDOW_WIDTH//4, WINDOW_HEIGHT//2))
+simpleButtonB = SimpleButton(window = window, pos = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2))
+simpleButtonC = SimpleButton(window = window, pos = (WINDOW_WIDTH//4*3, WINDOW_HEIGHT//2))
+
+simpleTextHeader = SimpleText(window = window, text = "This isn't a header", pos = (WINDOW_WIDTH//4, WINDOW_HEIGHT//4))
+simpleTextFooter = SimpleText(window = window, text = "This isn't a footer", pos = (WINDOW_WIDTH//4, WINDOW_HEIGHT//8*7))
 
 # Loop FRAMES_PER_SECOND times (per second)
 while True:
@@ -25,12 +32,18 @@ while True:
             sys.exit()
 
         # all the other events are handled by the class method
-        simpleButton.handle_events(event)
+        simpleButtonA.handle_events(event)
+        simpleButtonB.handle_events(event)
+        simpleButtonC.handle_events(event)
 
 
     # draw new window with (possibly) updated button
     window.fill(BLACK)
-    simpleButton.draw()
+    simpleButtonA.draw()
+    simpleButtonB.draw()
+    simpleButtonC.draw()
+    simpleTextHeader.draw()
+    simpleTextFooter.draw()
     pygame.display.update()
 
     # Slow things down a bit

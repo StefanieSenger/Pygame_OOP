@@ -3,10 +3,11 @@ import random
 from settings import WINDOW_WIDTH, WINDOW_HEIGHT, BALL_WIDTH_HEIGHT
 
 class Ball():
-    def __init__(self):
+    def __init__(self, window):
         self.MAX_WIDTH = WINDOW_WIDTH - BALL_WIDTH_HEIGHT
         self.MAX_HEIGHT = WINDOW_HEIGHT - BALL_WIDTH_HEIGHT
 
+        self.window = window
         self.image = pygame.image.load('images/ball.png')
         self.ballX = random.randrange(self.MAX_WIDTH)
         self.ballY = random.randrange(self.MAX_HEIGHT)
@@ -27,7 +28,8 @@ class Ball():
 
         return self
 
-    def draw(self, window):
+    def draw(self):
         # returns everything needed to draw a ball object in a window
 
-        return self.image, (self.ballX, self.ballY)
+        #return self.image, (self.ballX, self.ballY)
+        return self.window.blit(self.image, (self.ballX, self.ballY))
