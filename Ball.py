@@ -1,6 +1,6 @@
 import pygame
 import random
-from settings import WINDOW_WIDTH, WINDOW_HEIGHT, BALL_WIDTH_HEIGHT, N_PIXELS_PER_FRAME
+from settings import WINDOW_WIDTH, WINDOW_HEIGHT, BALL_WIDTH_HEIGHT
 
 class Ball():
     def __init__(self):
@@ -10,8 +10,8 @@ class Ball():
         self.image = pygame.image.load('images/ball.png')
         self.ballX = random.randrange(self.MAX_WIDTH)
         self.ballY = random.randrange(self.MAX_HEIGHT)
-        self.xSpeed = N_PIXELS_PER_FRAME
-        self.ySpeed = N_PIXELS_PER_FRAME
+        self.xSpeed = random.randint(1,5)
+        self.ySpeed = random.randint(1,5)
 
     def update(self):
         # updates position of ball
@@ -27,7 +27,7 @@ class Ball():
 
         return self
 
-    def draw(self):
+    def draw(self, window):
         # returns everything needed to draw a ball object in a window
 
         return self.image, (self.ballX, self.ballY)

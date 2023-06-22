@@ -1,4 +1,4 @@
-# refactoring procedural approach for ballbouncing screensafer from template_06
+# Refactoring procedural approach for ballbouncing screensafer from template_06
 # into OOP code
 
 # 1 - Import packages
@@ -9,11 +9,11 @@ import sys
 from Ball import Ball
 from settings import WINDOW_WIDTH, WINDOW_HEIGHT, FRAMES_PER_SECOND, BLACK
 
-# Initialize window and ball object
+# Initialize window and ball objects
 pygame.init()
 window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 clock = pygame.time.Clock()
-ball = Ball()
+ball_list = [Ball() for i in range(10)]
 
 # Loop FRAMES_PER_SECOND times (per second)
 while True:
@@ -26,13 +26,15 @@ while True:
             sys.exit()
 
     # update ball position
-    ball.update()
+    for ball in ball_list:
+        ball.update()
 
     # Clear the window before drawing it again
     window.fill(BLACK)
 
     # Draw the window elements
-    window.blit(*ball.draw())
+    for ball in ball_list:
+        window.blit(*ball.draw())
 
     # Update the window
     pygame.display.update()
